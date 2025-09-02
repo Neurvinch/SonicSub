@@ -19,13 +19,24 @@ const Community = () => {
         
       const signer = await provider.getSigner();
       const address = await signer.getAddress();
-      const contract = new ethers.Contract
-   }
+      const contract = new ethers.Contract(CONTRACT_ADDRESS, AbiCoder, provider)
 
-     
-  return (
-    <div>Community</div>
-  )
+      const balance = await contract.balanceOf(address)
+
+      if (balance > 0) {
+          const tokenId = await contract.tokenOfOwnerByIndex(address, 0);
+
+          const valid = await contract.isValid(tokenId);
+          setIsValid(valid);
+      }
+   }
+    useEffect( () => {
+      checkAccess();
+   },[provider])
+
+ if (!isValid) return <div>Buy a sub to access! <a href="/frame">Mint</a></div>;
+
+  return <div>Welcome! Exclusive content here.</div>;
 }
 
 export default Community
