@@ -13,8 +13,15 @@ const Community = () => {
         setProvider(provider) 
     }
    }, [])
+      
+   const checkAccess = async  () => {
+      if(!provider) return ;
+        
+      const signer = await provider.getSigner();
+      const address = await signer.getAddress();
+      const contract = new ethers.Contract
+   }
 
-   
      
   return (
     <div>Community</div>
