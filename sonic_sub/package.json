@@ -10,8 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@xmtp/xmtp-js": "^13.0.4",
+    "ethers": "^6.15.0",
+    "frame.js": "^1.1.10",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "viem": "^2.37.0",
+    "wagmi": "^2.16.9"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
