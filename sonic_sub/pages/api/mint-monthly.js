@@ -4,5 +4,11 @@ export default async function handler(req, res) {
 
     const ABI = abi
 
-    const calldata = new ethers.Interface(ABI).encodeFunctionData()
+    const calldata = new ethers.Interface(ABI).encodeFunctionData("mint", [false,true]);
+
+    res.json({
+        chainId: 'eip155:8453',
+        method: 'eth_sendTransaction',
+        params : {abi: ABI, to: CONTRACT_ADDRESS, data: calldata, value: '0'}
+    })
 }
