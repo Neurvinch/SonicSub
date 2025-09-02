@@ -45,13 +45,19 @@ const FarcasterFrame = () => {
                         const price = isAnnual ? '0.05' : '0.005';
                         await contract.mint(isAnnual, false, {value: ethers.parseEther(price)})
 
-                    }
+                    } 
+                      alert("Minted!")
                     
                   } catch (error) {
-                    
+                     console.error(e)
+                     alert("Mint failed")
                   }
 
+                  setIsLoading(false)
+
        }
+         
+          
 
 
 
