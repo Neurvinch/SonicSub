@@ -57,6 +57,17 @@ const FarcasterFrame = () => {
 
        }
          
+
+       const frames = createFrames({basePath: '/api'});
+
+       const frameHandler = frames( async () => ({
+         
+        image: 'pinata url',
+        buttons: [
+            { label: 'Monthly ($10)', action: "tx",target: "api/mint-monthly"},
+            { label: 'Annual ($100)', action: "tx",target: "api/mint-annual"},
+        ]
+       }))
           
 
 
