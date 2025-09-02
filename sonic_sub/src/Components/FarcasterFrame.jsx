@@ -41,8 +41,10 @@ const FarcasterFrame = () => {
                         
                         await usdc.approve(CONTRACT_ADDRESS,price);
                         await contract.mint(isAnnual,true)
-                    } else {
-                        
+                    } else { 
+                        const price = isAnnual ? '0.05' : '0.005';
+                        await contract.mint(isAnnual, false, {value: ethers.parseEther(price)})
+
                     }
                     
                   } catch (error) {
