@@ -12,3 +12,6 @@ export default async function handler(req, res) {
         params : {abi: ABI, to: CONTRACT_ADDRESS, data: calldata, value: '0'}
     })
 }
+
+
+ /// need to adapt this for vite 
