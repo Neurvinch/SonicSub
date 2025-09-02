@@ -19,9 +19,37 @@ const FarcasterFrame = () => {
 
        useEffect(() => {
         if(window.ethereum){
-            
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            setProvider(provider)
+            provider.getSigner().then(setSigner)
         }
-       },[])
+       },[]);
+
+       const mintSub = async () => {
+                  if(!signer) return alert("Please connect your wallet")
+            setIsLoading(true);
+
+
+                  try {
+
+                    const contract = new ethers.Contract(CONTRACT_ADDRESS,ABI,signer);
+
+                    if(useUSDC){
+                        const usdc = new ethers.Contract(USDC_ADDRESS,['function approve(address,uint256)'], signer);
+
+                        const price = isAnnual ? '100000000' : '10000000';
+                        
+                        await usdc.approve(CONTRACT_ADDRESS,price);
+                        await contract.mint(isAnnual,true)
+                    } else {
+                        
+                    }
+                    
+                  } catch (error) {
+                    
+                  }
+
+       }
 
 
 
