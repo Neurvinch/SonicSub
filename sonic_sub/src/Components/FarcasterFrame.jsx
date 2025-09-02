@@ -67,7 +67,7 @@ const FarcasterFrame = () => {
             { label: 'Monthly ($10)', action: "tx",target: "api/mint-monthly"},
             { label: 'Annual ($100)', action: "tx",target: "api/mint-annual"},
         ],
-           accepts : [{id: "farcaster"},  version: 'vNext'],
+           accepts : [{id: "farcaster"},{version:'vNext'}],
        }))
           
 
