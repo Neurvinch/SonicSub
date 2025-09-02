@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, version } from 'react'
 import {ethers} from "ethers"
 import {createFrames } from "frames.js/next"
 import abi from "../../ABI/sonicSub.json"
@@ -66,14 +66,27 @@ const FarcasterFrame = () => {
         buttons: [
             { label: 'Monthly ($10)', action: "tx",target: "api/mint-monthly"},
             { label: 'Annual ($100)', action: "tx",target: "api/mint-annual"},
-        ]
+        ],
+           accepts : [{id: "farcaster"},  version: 'vNext'],
        }))
           
 
 
 
   return (
-    <div>FarcasterFrame</div>
+    <div>
+      <h1>Hypersub: Join the Community</h1>
+      <button onClick={() => { setIsAnnual(false); mintSub(); }} disabled={isLoading}>
+        Mint Monthly Sub
+      </button>
+      <button onClick={() => { setIsAnnual(true); mintSub(); }} disabled={isLoading}>
+        Mint Annual Sub
+      </button>
+      <label>
+        <input type="checkbox" checked={useUSDC} onChange={(e) => setUseUSDC(e.target.checked)} />
+        Pay with USDC
+      </label>
+    </div>
   )
 }
 
